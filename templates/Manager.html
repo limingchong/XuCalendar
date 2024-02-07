@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Management</title>
+
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<form class="" method="POST">
+    {% csrf_token %}
+<button class="btn btn-secondary" onclick="window.location.replace('/reset')">Reset</button>
+<button type="submit" class="btn btn-primary">update</button>
+<table class="table"
+       style="border-collapse: separate; padding: 20px; table-layout: fixed;">
+    <thead>
+    <tr class="" style="font-size: 1vw">
+        <th scope="col" class="text-center rounded-2 col-1">month</th>
+        <th scope="col" class="text-center rounded-2 col-1">day</th>
+        <th scope="col" class="text-center rounded-2 col-1">special</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for date in dates_list %}
+        {% if date.year == 2000 %}
+        <tr>
+        <td class="text-center rounded-2 col-1">
+            {{ date.month }}
+        </td>
+        <td class="text-center rounded-2 col-1">
+            {{ date.day }}
+        </td>
+        <td class="text-center rounded-2 col-1">
+            <input id="special_{{ date.id }}" name="special_{{ date.id }}" value="{{ date.special }}"/>
+        </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+</form>
+</body>
+</html>

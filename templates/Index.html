@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        @font-face {
+            font-family: XiaoWeiFont;
+            src: url(/XuCalendar/static/ZCOOLXiaoWei-Regular.ttf);
+        }
+        body{
+            font-family: XiaoWeiFont;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container text-center">
+    <div id="main_card" class="card m-5 shadow-lg border-0"
+         style="padding:20px; background: #fbf4eb; font-size: 2vw;">
+        <div class="row card-header border-light bg-transparent border-0">
+            <div class="col position-absolute top-50 end-100" style="width: 2vw;">
+                <button class="btn btn-sm" type="button" style="background: white;" onclick="changeMonth({{ first_day }} - 1)"><</button>
+            </div>
+            <div class="col" style="font-size: 5vw;">
+                <strong>{{ month }}</strong>
+            </div>
+            <div class="col position-absolute top-50 end-0" style="width: 2vw;">
+                <button class="btn btn-sm" type="button" style="background: white;" onclick="changeMonth({{ last_day }} + 1)">></button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless"
+                   style="border-collapse: separate; padding: 20px; table-layout: fixed;">
+                <thead>
+                <tr class="" style="font-size: 1vw">
+                    <th scope="col" class="text-center rounded-2 col-1">MON</th>
+                    <th scope="col" class="text-center rounded-2 col-1">TUE</th>
+                    <th scope="col" class="text-center rounded-2 col-1">WED</th>
+                    <th scope="col" class="text-center rounded-2 col-1">THU</th>
+                    <th scope="col" class="text-center rounded-2 col-1">FRI</th>
+                    <th scope="col" class="text-center rounded-2 col-1">SAT</th>
+                    <th scope="col" class="text-center rounded-2 col-1">SUN</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for date in dates_list %}
+                    {% if date.ordinal >= first_day and date.ordinal <= last_day %}
+                        {% if date.week_day == 1 %}
+                            <tr>
+                        {% endif %}
+                    <td id="date_{{ date.id }}"
+                        style="background: {{ date.color }}; color: {% if date.color == 'white' %} 'black' {% else %} 'white' {% endif %};"
+                        class="text-center rounded-2 col-1"
+                        onclick="hover('{{ date.color }}')" onmouseover="hover('{{ date.color }}')"
+                        onmouseleave="unHover()"
+                            {% if date.special != "" %}
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ date.special }}"
+                            {% endif %}
+                    >
+                    {% if date.special != "" %}<mark>{% endif %}
+                        {% if date.ordinal == this_day %}<u>{% endif %}
+                        {{ date.day }}
+                        {% if date.ordinal == this_day %}</u>{% endif %}
+                    {% if date.special != "" %}</mark>{% endif %}
+                    </td>
+                    {% if date.week_day == 7 %}
+                        </tr>
+                    {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer border-light bg-transparent border-0">{{ year }}</div>
+    </div>
+    <div class="row" style="padding: 20px">
+        <h3 onclick="window.location.assign('/')">{{ today }}</h3>
+    </div>
+    <div>
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p>{{ saying }}</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite title="Source Title">{{ author }}</cite>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="row column-gap-2" style="padding: 50px; height: 15vw;">
+        <button class="col btn rounded-5" type="button" style="background: #f19960;" onclick="window.location.replace('/color/f19960')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #eeae94;" onclick="window.location.replace('/color/eeae94')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #84a725;" onclick="window.location.replace('/color/84a725')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #ca5a4b;" onclick="window.location.replace('/color/ca5a4b')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #e9bc6d;" onclick="window.location.replace('/color/e9bc6d')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #64262e;" onclick="window.location.replace('/color/64262e')"></button>
+    </div>
+</div>
+
+<hr class="border border-1 opacity-75">
+<div class="row text-center" style="color: grey; font-size: 1vw;">
+    <p class="col">© 2024 李明翀制作 徐任萱指导</p>
+    <p class="col">京 ICP 备 1300000 号 - 1</p>
+    <p class="col">京公网安备 11011111111111</p>
+</div>
+<script>
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
+    function clearAllIntervals() {
+        // Get a reference to the last interval + 1
+        const interval_id = window.setInterval(function () {
+        }, Number.MAX_SAFE_INTEGER);
+
+        // Clear any timeout/interval up to that id
+        for (let i = 1; i < interval_id; i++) {
+            window.clearInterval(i);
+        }
+    }
+
+    function changeColor(color) {
+        clearAllIntervals();
+        var targetRgb = hexToRgb(color);
+        var timer = setInterval(function () {
+            var currentRgbStr = document.getElementById("main_card").style.background.split("(")[1].split(")")[0].split(",");
+            currentRgb = [Number(currentRgbStr[0]), Number(currentRgbStr[1]), Number(currentRgbStr[2])];
+            for (var i = 0; i < 3; i++) {
+                if (currentRgb[i] > targetRgb[i]) {
+                    currentRgb[i]--;
+                }
+                if (currentRgb[i] < targetRgb[i]) {
+                    currentRgb[i]++;
+                }
+            }
+
+            document.getElementById("main_card").style.background = "#" + rgbToHex(currentRgb[0], currentRgb[1], currentRgb[2]);
+            if (currentRgb.toString() === targetRgb.toString()) {
+                clearInterval(timer);
+            }
+        }, 20);
+    }
+
+    function GFG(str1, str2) {
+        // Convert hexadecimal strings to the decimal and calculate the sum
+        const sum = (parseInt(str1, 16) + parseInt(str2, 16)).toString(16);
+        return sum;
+    }
+
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)
+        ] : null;
+    }
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+        return componentToHex(Number(r)) + componentToHex(Number(g)) + componentToHex(Number(b));
+    }
+
+    function hover(color) {
+        if (color === "white") return;
+        changeColor(color);
+    }
+
+    function unHover() {
+        changeColor("#fbf4eb");
+        clearAllToolTips();
+    }
+
+    function clearAllToolTips(){
+        for (var i = 0; i < tooltipList.length; i++){
+            bootstrap.Tooltip.getOrCreateInstance(tooltipList[i]._element).hide();
+        }
+    }
+
+    function changeMonth(day){
+        window.location.replace(day);
+    }
+</script>
+</body>
+</html>

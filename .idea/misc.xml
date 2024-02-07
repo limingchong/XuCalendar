@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="executionMode" value="BINARY" />
+    <option name="pathToExecutable" value="$USER_HOME$/opt/anaconda3/bin/black" />
+    <option name="sdkUUID" value="ff674d46-f810-49db-8b83-75425b736ae4" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (XuCalendar)" project-jdk-type="Python SDK" />
+</project>
