@@ -76,7 +76,8 @@ class manage(ListView):
 
 
 def color(request, color_id):
-    today_ordinal = date.today().toordinal()
+    now = datetime.datetime.now() + datetime.timedelta(hours=8)
+    today_ordinal = now.toordinal()
     dates.objects.filter(ordinal=today_ordinal).update(color='#' + color_id)
     return HttpResponseRedirect("/")
 
