@@ -14,22 +14,23 @@
     let font;
 
     function preload() {
-        font = loadFont('/XuCalendar/static/ZCOOLXiaoWei-Regular.ttf');
+        font = loadFont('/XuCalendar/static/ZCOOLQingKeHuangYou-Regular.ttf');
     }
 
     function setup() {
         createCanvas(windowWidth, windowHeight);
+        console.log(windowHeight / windowWidth);
         colorMode(HSB);
-        letter = '徐老师生日快乐'.replace(/\s/g, '').split('');
+        letter = '徐任萱生日快乐'.replace(/\s/g, '').split('');
         textCounter = 0;
-        gravity = createVector(0, 0.1);
+        gravity = createVector(0, 0.2 * windowHeight / windowWidth);
         addFirework();
         setInterval(addFirework, 800);
     }
 
     function draw() {
         colorMode(RGB);
-        background(0, 0, 0, 100);
+        background(0, 0, 0, 20);
         renderFireworks();
     }
 
