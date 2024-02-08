@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>生日快乐</title>
+    <title>徐任萱生日快乐</title>
     <script src="/XuCalendar/static/p5.js"></script>
+    <link rel="icon" href="/XuCalendar/static/xu.jpg" type="image/x-icon">
+
 </head>
-<body>
+<body style="background: black;">
 <script>
     let fireworks = [];
     let gravity;
     let letter;
     let textCounter = 0;
+    let totalCounter = 0;
     let font;
 
     const mousePosText = document.getElementById('mouse-pos');
@@ -18,6 +21,10 @@
 
     window.addEventListener('mousemove', (event) => {
         mousePos = {x: event.clientX, y: event.clientY};
+    });
+
+    window.addEventListener('mousedown', (event) => {
+        if (totalCounter > 7) window.location.assign("/");
     });
 
     function preload() {
@@ -42,6 +49,10 @@
 
     function addFirework() {
         fireworks.push(new Firework());
+        totalCounter++;
+        if (totalCounter > 7) {
+            document.getElementById("click").innerText = "点击打开日历";
+        }
     }
 
     function renderFireworks() {
@@ -57,7 +68,7 @@
 <script>
     class Particle {
         constructor(x, y, hu, firework, seek, target) {
-            this.pos = createVector(x , y);
+            this.pos = createVector(x, y);
             this.firework = firework;
             this.lifespan = 500;
             this.hu = hu;
@@ -136,7 +147,7 @@
         constructor() {
             this.hu = random(255);
             let x = random(50, width - 100);
-            if (mousePos.x !== undefined){
+            if (mousePos.x !== undefined) {
                 x = mousePos.x;
             }
             this.firework = new Particle(x, height, this.hu, true);
@@ -197,6 +208,7 @@
     }
 
 </script>
+<h4 id="click" style="color: white;"></h4>
 </body>
 
 </html>

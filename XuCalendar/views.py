@@ -27,7 +27,13 @@ class index(ListView):
     template_name = "Index.html"
 
     def get(self, request, *args, **kwargs):
-        return super(index, self).get(request, *args, **kwargs)
+        if 'first' in request.COOKIES:
+            if request.COOKIES['first'] == "true":
+                return super(index, self).get(request, *args, **kwargs)
+
+        response = HttpResponseRedirect('happy')
+        response.set_cookie('first', "true", expires=datetime.datetime.now() + datetime.timedelta(days=999))
+        return response
 
     def get_context_data(self, **kwargs):
         now = datetime.datetime.now() + datetime.timedelta(hours=8)
@@ -104,5 +110,6 @@ def reset(request, *args, **kwargs):
     print("reset finished.")
     return HttpResponseRedirect("manage")
 
+
 def happy(request, *args, **kwargs):
-    return render(request,"HappyBirthDay.html")
+    return render(request, "HappyBirthDay.html")
