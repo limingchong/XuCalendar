@@ -22,9 +22,9 @@
         colorMode(HSB);
         letter = '徐任萱生日快乐'.replace(/\s/g, '').split('');
         textCounter = 0;
-        gravity = createVector(0, 0.0001 * windowHeight);
+        gravity = createVector(0, 0.1 * windowWidth / windowHeight);
         addFirework();
-        setInterval(addFirework, 800);
+        setInterval(addFirework, 1000);
     }
 
     function draw() {
@@ -52,7 +52,7 @@
         constructor(x, y, hu, firework, seek, target) {
             this.pos = createVector(x, y);
             this.firework = firework;
-            this.lifespan = 400;
+            this.lifespan = 500;
             this.hu = hu;
             this.acc = createVector();
             this.vel = createVector();
