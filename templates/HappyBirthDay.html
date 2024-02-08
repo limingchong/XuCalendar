@@ -19,11 +19,10 @@
 
     function setup() {
         createCanvas(windowWidth, windowHeight);
-        console.log(windowHeight / windowWidth);
         colorMode(HSB);
         letter = '徐任萱生日快乐'.replace(/\s/g, '').split('');
         textCounter = 0;
-        gravity = createVector(0, 0.2 * windowHeight / windowWidth);
+        gravity = createVector(0, 0.0001 * windowHeight);
         addFirework();
         setInterval(addFirework, 800);
     }
@@ -53,7 +52,7 @@
         constructor(x, y, hu, firework, seek, target) {
             this.pos = createVector(x, y);
             this.firework = firework;
-            this.lifespan = 255;
+            this.lifespan = 400;
             this.hu = hu;
             this.acc = createVector();
             this.vel = createVector();
