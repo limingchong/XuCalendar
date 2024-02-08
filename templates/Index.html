@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>徐老师的日历</title>
 
     <!-- 新 Bootstrap5 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
@@ -19,12 +19,13 @@
             font-family: XiaoWeiFont;
         }
     </style>
+    <link rel="icon" href="/XuCalendar/static/xu.jpg" type="image/x-icon">
 
 </head>
 <body>
 <div class="container text-center">
     <div id="main_card" class="card m-5 shadow-lg border-0"
-         style="padding:20px; background: #fbf4eb; font-size: 2vw;">
+         style="padding:20px; background: #fbf4eb; font-size: 3vw;">
         <div class="row card-header border-light bg-transparent border-0">
             <div class="col position-absolute top-50 end-100" style="width: 2vw;">
                 <button class="btn btn-sm" type="button" style="background: white;" onclick="changeMonth({{ first_day }} - 1)"><</button>
@@ -40,14 +41,14 @@
             <table class="table table-borderless"
                    style="border-collapse: separate; padding: 20px; table-layout: fixed;">
                 <thead>
-                <tr class="" style="font-size: 1vw">
-                    <th scope="col" class="text-center rounded-2 col-1">MON</th>
-                    <th scope="col" class="text-center rounded-2 col-1">TUE</th>
-                    <th scope="col" class="text-center rounded-2 col-1">WED</th>
-                    <th scope="col" class="text-center rounded-2 col-1">THU</th>
-                    <th scope="col" class="text-center rounded-2 col-1">FRI</th>
-                    <th scope="col" class="text-center rounded-2 col-1">SAT</th>
-                    <th scope="col" class="text-center rounded-2 col-1">SUN</th>
+                <tr class="">
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>MON</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>TUE</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>WED</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>THU</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>FRI</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>SAT</h5></th>
+                    <th scope="col" class="text-center rounded-2 col-1"><h5>SUN</h5></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -83,12 +84,12 @@
         <div class="card-footer border-light bg-transparent border-0">{{ year }}</div>
     </div>
     <div class="row" style="padding: 20px">
-        <h3 onclick="window.location.assign('/')">{{ today }}</h3>
+        <h2 onclick="window.location.assign('/')">{{ today }}</h2>
     </div>
     <div>
         <figure class="text-center">
             <blockquote class="blockquote">
-                <p>{{ saying }}</p>
+                <h3>{{ saying }}</h3>
             </blockquote>
             <figcaption class="blockquote-footer">
                 <cite title="Source Title">{{ author }}</cite>
@@ -106,7 +107,7 @@
 </div>
 
 <hr class="border border-1 opacity-75">
-<div class="row text-center" style="color: grey; font-size: 1vw;">
+<div class="row text-center" style="color: grey;">
     <p class="col">© 2024 李明翀制作 徐任萱指导</p>
     <p class="col">京 ICP 备 1300000 号 - 1</p>
     <p class="col">京公网安备 11011111111111</p>
