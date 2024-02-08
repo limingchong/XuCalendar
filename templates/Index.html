@@ -23,18 +23,18 @@
 
 </head>
 <body>
-<div class="container text-center">
+<div id="content-main" class="container text-center">
     <div id="main_card" class="card m-5 shadow-lg border-0"
          style="padding:20px; background: #fbf4eb; font-size: 3vw;">
         <div class="row card-header border-light bg-transparent border-0">
-            <div class="col position-absolute top-50 end-100" style="width: 2vw;">
-                <button class="btn btn-sm" type="button" style="background: white;" onclick="changeMonth({{ first_day }} - 1)"><</button>
+            <div class="col position-absolute top-50 end-100" style="width: 3vw;">
+                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;" onclick="changeMonth({{ first_day }} - 1)"><</button>
             </div>
             <div class="col" style="font-size: 5vw;">
                 <strong>{{ month }}</strong>
             </div>
-            <div class="col position-absolute top-50 end-0" style="width: 2vw;">
-                <button class="btn btn-sm" type="button" style="background: white;" onclick="changeMonth({{ last_day }} + 1)">></button>
+            <div class="col position-absolute top-50 end-0" style="width: 3vw;">
+                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;" onclick="changeMonth({{ last_day }} + 1)">></button>
             </div>
         </div>
         <div class="card-body">
@@ -84,7 +84,7 @@
         <div class="card-footer border-light bg-transparent border-0">{{ year }}</div>
     </div>
     <div class="row" style="padding: 20px">
-        <h2 onclick="window.location.assign('/')">{{ today }}</h2>
+        <h2 onclick="window.location.assign('/')">- {{ today }} -</h2>
     </div>
     <div>
         <figure class="text-center">
@@ -96,7 +96,7 @@
             </figcaption>
         </figure>
     </div>
-    <div class="row column-gap-2" style="padding: 50px; height: 15vw;">
+    <div class="row column-gap-2" style="padding: 50px; height: 20vh;">
         <button class="col btn rounded-5" type="button" style="background: #f19960;" onclick="window.location.replace('/color/f19960')"></button>
         <button class="col btn rounded-5" type="button" style="background: #eeae94;" onclick="window.location.replace('/color/eeae94')"></button>
         <button class="col btn rounded-5" type="button" style="background: #84a725;" onclick="window.location.replace('/color/84a725')"></button>

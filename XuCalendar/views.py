@@ -3,6 +3,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from datetime import date
 
+from django.shortcuts import render
 from django.views.generic import ListView
 
 from XuCalendar.models import dates
@@ -102,3 +103,6 @@ def reset(request, *args, **kwargs):
 
     print("reset finished.")
     return HttpResponseRedirect("manage")
+
+def happy(request, *args, **kwargs):
+    return render(request,"HappyBirthDay.html")

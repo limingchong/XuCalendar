@@ -19,6 +19,7 @@ from XuCalendar.views import index
 from XuCalendar.views import reset
 from XuCalendar.views import manage
 from XuCalendar.views import color
+from XuCalendar.views import happy
 
 
 urlpatterns = [
@@ -27,5 +28,6 @@ urlpatterns = [
     path("<int:id>",index.as_view()),
     path("manage", manage.as_view()),
     path('color/<str:color_id>', color, name='color'),
-    path("reset", reset)
+    path("reset", reset),
+    path("happy", happy)
 ]
