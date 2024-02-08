@@ -13,6 +13,13 @@
     let textCounter = 0;
     let font;
 
+    const mousePosText = document.getElementById('mouse-pos');
+    let mousePos = {x: undefined, y: undefined};
+
+    window.addEventListener('mousemove', (event) => {
+        mousePos = {x: event.clientX, y: event.clientY};
+    });
+
     function preload() {
         font = loadFont('/XuCalendar/static/ZCOOLQingKeHuangYou-Regular.ttf');
     }
@@ -50,7 +57,7 @@
 <script>
     class Particle {
         constructor(x, y, hu, firework, seek, target) {
-            this.pos = createVector(x, y);
+            this.pos = createVector(x , y);
             this.firework = firework;
             this.lifespan = 500;
             this.hu = hu;
@@ -129,6 +136,9 @@
         constructor() {
             this.hu = random(255);
             let x = random(50, width - 100);
+            if (mousePos.x !== undefined){
+                x = mousePos.x;
+            }
             this.firework = new Particle(x, height, this.hu, true);
             this.exploded = false;
             this.particles = [];
