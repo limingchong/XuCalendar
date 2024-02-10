@@ -94,7 +94,7 @@ def reset(request, *args, **kwargs):
 
     today = datetime.datetime(year=2000, month=1, day=1)
 
-    while today.year <= 2030:
+    while today.year <= 2099:
         new_day = {
             'ordinal': today.toordinal(),
             'year': today.year,
