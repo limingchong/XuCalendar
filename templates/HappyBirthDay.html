@@ -50,6 +50,9 @@
     function addFirework() {
         fireworks.push(new Firework());
         totalCounter++;
+        if (totalCounter == 1){
+            document.getElementById("click").innerText = " ";
+        }
         if (totalCounter > 7) {
             document.getElementById("click").innerText = "点击此处打开日历";
         }
@@ -214,7 +217,7 @@
     }
 
 </script>
-<div id="click" style="color: white;" onclick="openCalendar();">  </div>
+<div id="click" style="color: white; font-size: 2vh;" onclick="openCalendar();">Loading...</div>
 </body>
 
 </html>
