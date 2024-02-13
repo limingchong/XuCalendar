@@ -15,7 +15,8 @@
             font-family: XiaoWeiFont;
             src: url(/XuCalendar/static/ZCOOLXiaoWei-Regular.ttf);
         }
-        body{
+
+        body {
             font-family: XiaoWeiFont;
         }
     </style>
@@ -28,13 +29,17 @@
          style="padding:20px; background: #fbf4eb; font-size: 3vw;">
         <div class="row card-header border-light bg-transparent border-0">
             <div class="col position-absolute top-50 end-100" style="width: 3vw;">
-                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;" onclick="changeMonth({{ first_day }} - 1)"><</button>
+                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;"
+                        onclick="changeMonth({{ first_day }} - 1)"><
+                </button>
             </div>
             <div class="col" style="font-size: 5vw;">
                 <strong>{{ month }}</strong>
             </div>
             <div class="col position-absolute top-50 end-0" style="width: 3vw;">
-                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;" onclick="changeMonth({{ last_day }} + 1)">></button>
+                <button class="btn btn-sm shadow" type="button" style="background: white; width: 4vw; height: 8vh;"
+                        onclick="changeMonth({{ last_day }} + 1)">>
+                </button>
             </div>
         </div>
         <div class="card-body">
@@ -67,11 +72,12 @@
                         data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ date.special }}"
                             {% endif %}
                     >
-                    {% if date.special != "" %}<mark>{% endif %}
+                        {% if date.special != "" %}
+                            <mark>{% endif %}
                         {% if date.ordinal == this_day %}<u>{% endif %}
                         {{ date.day }}
                         {% if date.ordinal == this_day %}</u>{% endif %}
-                    {% if date.special != "" %}</mark>{% endif %}
+                        {% if date.special != "" %}</mark>{% endif %}
                     </td>
                     {% if date.week_day == 7 %}
                         </tr>
@@ -97,20 +103,19 @@
         </figure>
     </div>
     <div class="row column-gap-2" style="padding: 50px; height: 20vh;">
-        <button class="col btn rounded-5" type="button" style="background: #f19960;" onclick="window.location.replace('/color/f19960')"></button>
-        <button class="col btn rounded-5" type="button" style="background: #eeae94;" onclick="window.location.replace('/color/eeae94')"></button>
-        <button class="col btn rounded-5" type="button" style="background: #84a725;" onclick="window.location.replace('/color/84a725')"></button>
-        <button class="col btn rounded-5" type="button" style="background: #ca5a4b;" onclick="window.location.replace('/color/ca5a4b')"></button>
-        <button class="col btn rounded-5" type="button" style="background: #e9bc6d;" onclick="window.location.replace('/color/e9bc6d')"></button>
-        <button class="col btn rounded-5" type="button" style="background: #64262e;" onclick="window.location.replace('/color/64262e')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #f19960;"
+                onclick="window.location.replace('/color/f19960')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #eeae94;"
+                onclick="window.location.replace('/color/eeae94')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #84a725;"
+                onclick="window.location.replace('/color/84a725')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #ca5a4b;"
+                onclick="window.location.replace('/color/ca5a4b')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #e9bc6d;"
+                onclick="window.location.replace('/color/e9bc6d')"></button>
+        <button class="col btn rounded-5" type="button" style="background: #64262e;"
+                onclick="window.location.replace('/color/64262e')"></button>
     </div>
-</div>
-
-<hr class="border border-1 opacity-75">
-<div class="row text-center" style="color: grey;">
-    <p class="col">© 2024 李明翀制作 徐任萱指导</p>
-    <p class="col">京 ICP 备 1300000 号 - 1</p>
-    <p class="col">京公网安备 11011111111111</p>
 </div>
 <script>
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -183,15 +188,22 @@
         clearAllToolTips();
     }
 
-    function clearAllToolTips(){
-        for (var i = 0; i < tooltipList.length; i++){
+    function clearAllToolTips() {
+        for (var i = 0; i < tooltipList.length; i++) {
             bootstrap.Tooltip.getOrCreateInstance(tooltipList[i]._element).hide();
         }
     }
 
-    function changeMonth(day){
+    function changeMonth(day) {
         window.location.replace(day);
     }
 </script>
 </body>
+<hr class="border border-1 opacity-75">
+<div class="row text-center" style="color: grey;">
+    <p class="col">© 2024 李明翀制作 徐任萱指导</p>
+    <a class="col" href="https://beian.miit.gov.cn/" style="color: rgb(128,128,128);">京ICP备2022000581号-1</a>
+    <a class="col" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102005856" style="color: rgb(128,128,128);">
+        京公网安备11010102005856号</a>
+</div>
 </html>

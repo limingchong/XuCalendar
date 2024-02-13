@@ -14,7 +14,7 @@
 <body>
 <form class="" method="POST">
     {% csrf_token %}
-    <button class="btn btn-secondary" onclick="window.location.replace('/reset')">Reset</button>
+    <button class="btn btn-secondary" onclick="window.location.replace('/reset')" hidden>Reset</button>
     <button type="submit" class="btn btn-primary">update</button>
     <table class="table"
            style="border-collapse: separate; padding: 20px; table-layout: fixed;">
